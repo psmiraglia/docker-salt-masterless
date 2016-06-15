@@ -15,3 +15,5 @@ RUN curl https://repo.saltstack.com/apt/debian/8/amd64/latest/SALTSTACK-GPG-KEY.
 ADD conf/minion /etc/salt/minion
 ADD states /srv/salt
 
+RUN mkdir -p /opt/formulas
+
