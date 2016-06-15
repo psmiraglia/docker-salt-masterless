@@ -1,6 +1,0 @@
-file_client: local
-fileserver_backend:
-    - roots
-file_roots:
-    base:
-        - /srv/salt
