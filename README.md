@@ -59,6 +59,14 @@ image(s).
     root@53d9bdf28b88$ salt-call --local state.apply myownstate
     ...
 
+Alternatively, you can create your own Docker image by creating a `Dockerfile`
+like the following
+
+    FROM salt-masterless:centos7
+
+    ADD myownstate.sls /srv/salt/myownstate.sls
+    ADD anotherstate.sls /srv/salt/anotherstate.sls
+
 ## Updating Minion's configuration
 
 To update the masterless Minion's configuration, add a `.conf` file in
