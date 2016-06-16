@@ -32,10 +32,10 @@ To test an image
     root@53d9bdf28b88$ salt-call --local test.ping
     ...
 
-    root@53d9bdf28b88$ salt-call --local state.show_sls
+    root@53d9bdf28b88$ salt-call --local state.show_highstate
     ...
 
-    root@53d9bdf28b88$ salt-call --local state.apply
+    root@53d9bdf28b88$ salt-call --local state.highstate
     ...
 
 ## Adding and tesing custom Salt states
