@@ -8,7 +8,9 @@ distributions:
 * CentOS 7 ([`Dockerfile`](./centos/6/Dockerfile))
 * Ubuntu 14.04 ([`Dockerfile`](./ubuntu/14.04/Dockerfile))
 * Ubuntu 16.04 ([`Dockerfile`](./ubuntu/16.04/Dockerfile))
-* Debian 8 ([`Dockerfile`](./debia/8/Dockerfile))
+* Debian 8 ([`Dockerfile`](./debian/8/Dockerfile))
+
+## Building Docker images
 
 To build all the images, you can use the `make`
 
@@ -36,6 +38,8 @@ To test an image
     root@53d9bdf28b88$ salt-call --local state.apply
     ...
 
+## Adding and tesing custom Salt states
+
 To test your own state, add it under [`states`](./states) and rebuild the
 image(s).
 
@@ -54,6 +58,8 @@ image(s).
 
     root@53d9bdf28b88$ salt-call --local state.apply myownstate
     ...
+
+## Updating Minion's configuration
 
 To update the masterless Minion's configuration, add a `.conf` file in
 [`minion.d`](./minion.d) and rebuild the image(s).
