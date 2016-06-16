@@ -64,7 +64,7 @@ image(s).
 To update the masterless Minion's configuration, add a `.conf` file in
 [`minion.d`](./minion.d) and rebuild the image(s).
 
-References:
+## References
 
 * [Salt Masterless Quickstart](https://docs.saltstack.com/en/latest/topics/tutorials/quickstart.html)
 * [Configuring the Salt Minion](https://docs.saltstack.com/en/latest/ref/configuration/minion.html)
