@@ -3,7 +3,6 @@
 default: build
 
 build: deb8 ubu14.04 ubu16.04 cos6 cos7
-	docker build -t salt-masterless .
 
 run:
 	docker run -ti --rm salt-masterless
