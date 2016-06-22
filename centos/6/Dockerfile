@@ -1,6 +1,7 @@
 FROM centos:6
 MAINTAINER "Paolo Smiraglia <paolo.smiraglia@gmail.com>"
 
+# install SaltStack
 RUN yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el6.noarch.rpm \
     && yum clean expire-cache \
     && yum install -y \
@@ -8,7 +9,15 @@ RUN yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el6.
         salt-minion \
         vim
 
+# add minion's configuration modules
 ADD conf/minion.d/* /etc/salt/minion.d/
-ADD states /srv/salt
 
-RUN mkdir -p /opt/formulas
+# add top level states
+ADD conf/salt /srv/salt
+
+# add top level pillar
+ADD conf/pillar /srv/pillar
+
+# create formulas' directory
+RUN mkdir -p /srv/formulas
+
