@@ -1,0 +1,12 @@
+# add minion's configuration modules
+ADD conf/minion.d/* /etc/salt/minion.d/
+
+# add top level states
+ADD conf/salt /srv/salt
+
+# add top level pillar
+ADD conf/pillar /srv/pillar
+
+# create formulas' directory
+RUN mkdir -p /srv/formulas
+
