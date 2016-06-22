@@ -1,11 +1,8 @@
-.PHONY: minion.d states
+.PHONY: minion.d salt pillar
 
 default: build
 
 build: deb8 ubu14.04 ubu16.04 cos6 cos7
-
-run:
-	docker run -ti --rm salt-masterless
 
 minion.d:
 	cp -Rfv ./minion.d ./centos/6/conf/
@@ -14,24 +11,31 @@ minion.d:
 	cp -Rfv ./minion.d ./ubuntu/14.04/conf/
 	cp -Rfv ./minion.d ./ubuntu/16.04/conf/
 
-states:
-	cp -Rfv ./states ./centos/6/
-	cp -Rfv ./states ./centos/7/
-	cp -Rfv ./states ./debian/8/
-	cp -Rfv ./states ./ubuntu/14.04/
-	cp -Rfv ./states ./ubuntu/16.04/
+salt:
+	cp -Rfv ./salt ./centos/6/conf/
+	cp -Rfv ./salt ./centos/7/conf/
+	cp -Rfv ./salt ./debian/8/conf/
+	cp -Rfv ./salt ./ubuntu/14.04/conf/
+	cp -Rfv ./salt ./ubuntu/16.04/conf/
 
-deb8: minion.d states
+pillar:
+	cp -Rfv ./pillar ./centos/6/conf/
+	cp -Rfv ./pillar ./centos/7/conf/
+	cp -Rfv ./pillar ./debian/8/conf
+	cp -Rfv ./pillar ./ubuntu/14.04/conf/
+	cp -Rfv ./pillar ./ubuntu/16.04/conf/
+
+deb8: minion.d salt pillar
 	docker build --tag salt-masterless:debian8 ./debian/8
 
-ubu16.04: minion.d states
+ubu16.04: minion.d salt pillar
 	docker build --tag salt-masterless:ubuntu16.04 ./ubuntu/16.04
 
-ubu14.04: minion.d states
+ubu14.04: minion.d salt pillar
 	docker build --tag salt-masterless:ubuntu14.04 ./ubuntu/14.04
 
-cos6: minion.d states
+cos6: minion.d salt pillar
 	docker build --tag salt-masterless:centos6 ./centos/6
 
-cos7: minion.d states
+cos7: minion.d salt pillar
 	docker build --tag salt-masterless:centos7 ./centos/7
