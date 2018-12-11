@@ -2,7 +2,7 @@ FROM centos:7
 MAINTAINER "Paolo Smiraglia <paolo.smiraglia@gmail.com>"
 
 # install SaltStack
-RUN yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el7.noarch.rpm \
+RUN yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm \
     && yum clean expire-cache \
     && yum install -y \
         git \
